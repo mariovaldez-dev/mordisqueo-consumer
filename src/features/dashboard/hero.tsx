@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import DialogAlert from "../shared/components/DialogAlert";
+import DialogAlert from "../../shared/components/DialogAlert";
+import { useNavigate } from "react-router";
 
 export default function Hero() {
-    const [isDialogBookingOpen, setIsDialogBookingOpen] =
+    const navigation = useNavigate();
+    const [isDialogBookingOpen] =
         useState<boolean>(false);
 
     const handleBookingButton = () => {
-        setIsDialogBookingOpen(!isDialogBookingOpen);
+        navigation('booking')
     };
 
     return (
         <div className="px-5 mt-8 mb-48 transition-colors duration-300">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="xs:text-4xl sm:text-3xl md:text-6xl lg:text-7xl xl:text-8xl font-bold dark:text-white text-[hsl(0,0%,8%)] transition-colors duration-300">
+                <h1 className="xs:text-4xl sm:text-3xl md:text-6xl lg:text-7xl xl:text-8xl font-bold lg:text-primary dark:text-white text-[hsl(0,0%,8%)] transition-colors duration-300">
                     ¡Reserva con nosotros!
                 </h1>
                 <div className="flex flex-col items-center">

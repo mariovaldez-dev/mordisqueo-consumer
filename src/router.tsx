@@ -1,26 +1,38 @@
+import { lazy, Suspense } from "react";
 import { RouteObject } from "react-router";
-import Dashboard from "./dashboard/Dashboard";
-import AppLayout from "./layouts/shared/AppLayout";
-import BaseLayout from "./layouts/shared/BaseLayout";
+import { Loading } from "./components/LoadingFallback";
+
+const AppLayout = lazy(() => import("./layouts/shared/AppLayout"));
+const BaseLayout = lazy(() => import("./layouts/shared/BaseLayout"));
+const Booking = lazy(() => import("./features/booking/presentation/Booking"));
+const LandingPage = lazy(() => import("./features/landing/LandingPage"));
 
 const routes: RouteObject[] = [
     {
         path: "",
-        element: <BaseLayout />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <BaseLayout />
+            </Suspense>
+        ),
         children: [
             {
                 path: "",
-                element: <Dashboard />,
+                element: <LandingPage />,
             },
         ],
     },
     {
         path: "/booking",
-        element: <AppLayout />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <AppLayout />
+            </Suspense>
+        ),
         children: [
             {
                 path: "",
-                element: <>HOLA MI NOMBRE ES BOOKING</>,
+                element: <Booking />,
             },
         ],
     },
