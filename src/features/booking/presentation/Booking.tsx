@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Users, Package as PackageIcon, User, Check } from 'lucide-react';
+import { Calendar, Package as PackageIcon, User, Check } from 'lucide-react';
 import { UserInfo, EventDetails, Package, EventType, Step } from './types';
 import { EventDetailsStep } from './components/EventDetailsStep';
 import { PackageSelectionStep } from './components/PackageSelectionStep';
